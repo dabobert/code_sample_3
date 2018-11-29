@@ -23,9 +23,9 @@ class GildedRose
       @quality -= 1 if @quality > 0
     end
 
-    if @name != "Sulfuras, Hand of Ragnaros"
-      @days_remaining -= 1
-    end
+    # decrement days
+    # to do: this should be moved to the top of the function, but all other numbers would have to be change
+    @days_remaining -= 1
 
     if @days_remaining < 0
       if @name == "Backstage passes to a TAFKAL80ETC concert"
