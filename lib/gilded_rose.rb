@@ -35,10 +35,9 @@ class GildedRose
           @quality += 1
         end
       else
+        # didnt do elsif because it's a different comparison
         if @quality > 0
-          if @name != "Sulfuras, Hand of Ragnaros"
-            @quality -= 1
-          end
+          @quality -= 1
         end
       end
     end
