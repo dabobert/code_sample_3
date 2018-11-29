@@ -13,8 +13,8 @@ class GildedRose
     elsif @name == "Backstage passes to a TAFKAL80ETC concert"
       if @quality < 50
         @quality += 1
-        @quality += 1 if @days_remaining < 11 && @quality < 50
-        @quality += 1 if @days_remaining < 6 && @quality < 50
+        @quality += 1 if @days_remaining < 11 
+        @quality += 1 if @days_remaining < 6
       end
     else
       if @quality > 0
