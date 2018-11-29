@@ -420,7 +420,7 @@ RSpec.describe GildedRose do
       context 'with moderate quality' do
         let(:quality) { 10 }
 
-        xit 'should have one less day remaining' do
+        it 'should have one less day remaining' do
           expect { gilded_rose.tick }.to change { gilded_rose.days_remaining }
             .from(5).to(4)
         end
