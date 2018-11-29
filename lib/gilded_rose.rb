@@ -19,15 +19,17 @@ class GildedRose
         @quality += 1 if @days_remaining < 11 
         @quality += 1 if @days_remaining < 6
       end
-    else
-      @quality -= 1 if @quality > 0
     end
 
     # decrement days
     # to do: this should be moved to the top of the function, but all other numbers would have to be change
     @days_remaining -= 1
     
-    if @days_remaining < 0
+    # before sell date
+    if @days_remaining > 0
+      @quality -= 1 unless ["Backstage passes to a TAFKAL80ETC concert", "Aged Brie"].include?(@name)
+    elsif @days_remaining == 0
+    elsif @days_remaining < 0
       case @name
       when  "Backstage passes to a TAFKAL80ETC concert"
         @quality = 0
@@ -38,9 +40,12 @@ class GildedRose
       else
         # didnt do elsif because it's a different comparison
         if @quality > 0
-          @quality -= 1
+          @quality -= 2
         end
       end
     end
+
+    #cleanup 
+    @quality = 0 if @quality < 0 && false == ["Backstage passes to a TAFKAL80ETC concert", "Aged Brie"].include?(@name)
   end
 end
