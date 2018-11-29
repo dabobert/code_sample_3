@@ -26,7 +26,7 @@ class GildedRose
     # decrement days
     # to do: this should be moved to the top of the function, but all other numbers would have to be change
     @days_remaining -= 1
-
+    
     if @days_remaining < 0
       case @name
       when  "Backstage passes to a TAFKAL80ETC concert"
