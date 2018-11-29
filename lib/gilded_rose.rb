@@ -8,21 +8,13 @@ class GildedRose
   end
 
   def tick
-    if @name == "Aged Brie" || @name == "Backstage passes to a TAFKAL80ETC concert"
+    if @name == "Aged Brie"
+      @quality += 1 if @quality < 50
+    elsif @name == "Backstage passes to a TAFKAL80ETC concert"
       if @quality < 50
         @quality += 1
-        if @name == "Backstage passes to a TAFKAL80ETC concert"
-          if @days_remaining < 11
-            if @quality < 50
-              @quality += 1
-            end
-          end
-          if @days_remaining < 6
-            if @quality < 50
-              @quality += 1
-            end
-          end
-        end
+        @quality += 1 if @days_remaining < 11 && @quality < 50
+        @quality += 1 if @days_remaining < 6 && @quality < 50
       end
     else
       if @quality > 0
