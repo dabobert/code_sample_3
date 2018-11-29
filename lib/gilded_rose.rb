@@ -28,9 +28,10 @@ class GildedRose
     @days_remaining -= 1
 
     if @days_remaining < 0
-      if @name == "Backstage passes to a TAFKAL80ETC concert"
+      case @name
+      when  "Backstage passes to a TAFKAL80ETC concert"
         @quality = 0
-      elsif @name == "Aged Brie"
+      when "Aged Brie"
         if @quality < 50
           @quality += 1
         end
