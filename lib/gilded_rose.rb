@@ -8,6 +8,9 @@ class GildedRose
   end
 
   def tick
+    # short circuit if we have the weapon
+    return if @name == "Sulfuras, Hand of Ragnaros"
+
     if @name == "Aged Brie"
       @quality += 1 if @quality < 50
     elsif @name == "Backstage passes to a TAFKAL80ETC concert"
@@ -17,11 +20,7 @@ class GildedRose
         @quality += 1 if @days_remaining < 6
       end
     else
-      if @quality > 0
-        if @name != "Sulfuras, Hand of Ragnaros"
-          @quality -= 1
-        end
-      end
+      @quality -= 1 if @quality > 0
     end
 
     if @name != "Sulfuras, Hand of Ragnaros"
