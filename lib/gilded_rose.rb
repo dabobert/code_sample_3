@@ -1,3 +1,5 @@
+# i SERIOUSLY thought of just turning everything into objects but thought it be overkill
+
 class GildedRose
   attr_reader :name, :days_remaining, :quality
 
@@ -11,41 +13,61 @@ class GildedRose
     # short circuit if we have the weapon
     return if @name == "Sulfuras, Hand of Ragnaros"
 
-    if @name == "Aged Brie"
-      @quality += 1 if @quality < 50
-    elsif @name == "Backstage passes to a TAFKAL80ETC concert"
-      if @quality < 50
-        @quality += 1
-        @quality += 1 if @days_remaining < 11 
-        @quality += 1 if @days_remaining < 6
-      end
-    end
-
-    # decrement days
-    # to do: this should be moved to the top of the function, but all other numbers would have to be change
     @days_remaining -= 1
     
     # before sell date
     if @days_remaining > 0
-      @quality -= 1 unless ["Backstage passes to a TAFKAL80ETC concert", "Aged Brie"].include?(@name)
+
+      case @name
+      when "Aged Brie"
+        @quality += 1
+      when "Backstage passes to a TAFKAL80ETC concert"
+        puts
+        puts "#{@name}===================="
+        puts "@days_remaining: #{@days_remaining}"
+        puts "before quality: #{@quality}"
+        if @days_remaining > 10
+          @quality += 1
+        elsif @days_remaining >= 6
+          @quality += 2
+        else
+          puts "1-----#{@quality}----"
+          @quality += 3
+          puts "2-----#{@quality}----"
+        end
+        puts "after quality: #{@quality}"
+      else
+        @quality -= 1
+      end
+
     elsif @days_remaining == 0
+
+      case @name
+      when "Aged Brie"
+        @quality += 2
+      end
+
     elsif @days_remaining < 0
+
       case @name
       when  "Backstage passes to a TAFKAL80ETC concert"
         @quality = 0
       when "Aged Brie"
-        if @quality < 50
-          @quality += 1
-        end
+        @quality += 2
       else
-        # didnt do elsif because it's a different comparison
-        if @quality > 0
-          @quality -= 2
-        end
+#CHECK THIS OUT        
+        @quality -= 2
+
       end
     end
 
-    #cleanup 
-    @quality = 0 if @quality < 0 && false == ["Backstage passes to a TAFKAL80ETC concert", "Aged Brie"].include?(@name)
+    # quality must stay btw 0 and 50
+    if @quality > 50
+      @quality = 50
+    elsif @quality < 0
+#CHECK THIS OUT        
+
+      @quality = 0
+    end
   end
 end
