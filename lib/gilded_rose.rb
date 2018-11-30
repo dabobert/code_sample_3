@@ -23,7 +23,7 @@ class GildedRose
 
     # decrement days
     # to do: this should be moved to the top of the function, but all other numbers would have to be change
-    @days_remaining -= 1
+
     
     # before sell date
     if @days_remaining > 0
@@ -46,6 +46,8 @@ class GildedRose
     end
 
     #cleanup 
+
+    @days_remaining -= 1
     @quality = 0 if @quality < 0 && false == ["Backstage passes to a TAFKAL80ETC concert", "Aged Brie"].include?(@name)
   end
 end
