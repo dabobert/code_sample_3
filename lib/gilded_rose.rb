@@ -36,6 +36,8 @@ class GildedRose
       case @name
       when "Aged Brie"
         @quality += 2
+      else
+        @quality -= 2
       end
     elsif @days_remaining < 0
       case @name
