@@ -36,6 +36,8 @@ class GildedRose
       case @name
       when "Aged Brie"
         @quality += 2
+      when  "Backstage passes to a TAFKAL80ETC concert"
+        @quality = 0
       else
         @quality -= 2
       end
